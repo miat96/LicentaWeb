@@ -3,29 +3,28 @@ import { Base64 } from 'js-base64';
 import fetch from 'isomorphic-fetch';
 import FormData from 'form-data';
 
-export class LoginService{
+export class FindPasswordService{
     static cookies = new Cookies();
 
     static getId() {
-        let data = this.cookies.get('TOKEN');
+        let data = this.cookies.get('USERNAME');
 
         if (data === undefined) {
             return "";
         }
 
-        let token = Base64.decode(data).split(',');
-        this.id = token[0];
+        let username = Base64.decode(data).split(',');
+        this.id = username[0];
         return this.id;
     }
 
     static setData(id) {
-        this.cookies.set('TOKEN', Base64.encode(id));
+        this.cookies.set('USERNAME', Base64.encode(id));
     }
 
-    static login(username, password){
+    static sendMail(username){
         let formData = new FormData();
         formData.append('username', username);
-        formData.append('password', password);
 
         let data = {
             method: 'POST',
@@ -33,16 +32,13 @@ export class LoginService{
         }
 
         return new Promise((resolve, reject) => {
-            fetch("http://localhost/licenta/login.php", data)
+            fetch("http://localhost/licenta/sendMail.php", data)
             .then((result) => {resolve(result)})
             .catch((error) => {reject(error)})
         });
     }
 
-
-
-
-    static logout() {
-        this.cookies.remove('TOKEN');
+    static removeId(){
+        this.cookies.remove('USERNAME');
     }
 }

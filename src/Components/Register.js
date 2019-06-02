@@ -1,37 +1,31 @@
 import * as React from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import "../CSS/Login.css";
-import {LoginService} from '../Services/LoginService.js';
+import "../CSS/Register.css";
+import {RegisterService} from "../Services/RegisterService";
 import { NotificationManager } from 'react-notifications';
-import {NavItem} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 
-export class Login extends React.Component{
-
+export class Register extends React.Component{
+    
     constructor(props){
         super(props);
         this.state = {
           username: '',
           password: '',
+          token: '',
         }
     }
 
-    validateForm() {
-      return this.state.username.length > 0 && this.state.password.length > 0;
-    }
-    
     handleSubmit = event => {
       event.preventDefault();
-      LoginService.login(this.state.username, this.state.password).then(response => response.json())
+      RegisterService.register(this.state.username, this.state.password, this.state.token).then(response => response.json())
       .then(responseJson =>{
-        console.log(responseJson.token);
-        if(responseJson.token){
-          NotificationManager.success(responseJson.token);
-          LoginService.setData(responseJson.token);
-          this.props.history.push("/principal");
+        console.log(responseJson.success);
+        if(responseJson.success){
+          NotificationManager.success(responseJson.success);
+          this.props.history.push("/login");
         }
         else{
-          NotificationManager.error('Incorect');
+          NotificationManager.error(responseJson.error);
         }
       
       }, (error) => {
@@ -41,10 +35,11 @@ export class Login extends React.Component{
 
     render(){
         return (
-            <div className="Login">
+            <div className="Register">
+
               <form onSubmit={this.handleSubmit}>
                 <FormGroup controlId="username">
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Username</FormLabel>
                   <FormControl
                     autoFocus
                     type="text"
@@ -62,22 +57,23 @@ export class Login extends React.Component{
                     }}
                   />
                 </FormGroup>
+                <FormGroup controlId="token">
+                  <FormLabel>Token</FormLabel>
+                  <FormControl
+                    type="text"
+                    onChange={(event) => {
+                      this.setState({token : event.target.value})
+                    }}
+                  />
+                </FormGroup>
                 <Button
                   block
                   //disabled={!this.validateForm()}
-                  type="submit"
-                >
-                  Login
+                  type="submit">
+                  Register
                 </Button>
               </form>
-              <div>
-                {/* <a href="/findPassword" className="stretched-link" role="button">Ai uitat parola?</a> */}
-                <Link to="/findPassword">
-                    <NavItem>Ai uitat parola?</NavItem>
-                </Link>
-              </div>    
             </div>
         );
     }
-
 }

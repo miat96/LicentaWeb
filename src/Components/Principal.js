@@ -1,16 +1,13 @@
 import * as React from 'react';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Button} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMobileAlt, faUser } from '@fortawesome/fontawesome-free-solid'
 import {LoginService} from '../Services/LoginService.js'
 import {PrincipalService} from '../Services/PrincipalService.js'
-import Geocode from "react-geocode";
 import ReactBnbGallery from 'react-bnb-gallery'
 
-const AnyReactComponent = props => <div><FontAwesomeIcon icon={faUser} size="2x" color="#990000"/></div>;
+const UserReactComponent = props => <div><FontAwesomeIcon icon={faUser} size="2x" color="#990000"/></div>;
 
 const PhoneReactComponent = props => <div><FontAwesomeIcon icon={faMobileAlt} size="2x" color="#990000"/></div>;
 
@@ -113,19 +110,14 @@ export class Principal extends React.Component{
                 defaultCenter={this.state.center}
                 defaultZoom={this.props.zoom}
               >
-            
-              <AnyReactComponent
-                lat={this.state.myLatitude}
-                lng={this.state.myLongitude}
-              />
-
-              {/* if(this.state.findThePhone === true){ */}
+                <UserReactComponent
+                  lat={this.state.myLatitude}
+                  lng={this.state.myLongitude}
+                />
                 <PhoneReactComponent
                   lat={this.state.phoneLatitude}
                   lng={this.state.phoneLongitude}
                 />
-              {/* } */}
-
               </GoogleMapReact>
 
               <form onSubmit={this.handleSubmit}>
@@ -143,18 +135,7 @@ export class Principal extends React.Component{
               <ReactBnbGallery
                 show={this.state.galleryOpened}
                 photos={this.state.photos}
-                onClose={this.toggleGallery} />
-
-              {/* <div>{
-                 this.state.photos.map((photo) => (
-                  <img width="400" height="400" src={"data:image/jpeg;base64," + photo}/>
-
-                ))
-                
-              }
-              </div> */}
-
-              
+                onClose={this.toggleGallery} />              
             </div>
         );
       }

@@ -123,17 +123,15 @@ export class Principal extends React.Component{
                   defaultZoom={this.props.zoom}
                 >
               
-                <AnyReactComponent
-                  lat={this.state.myLatitude}
-                  lng={this.state.myLongitude}
-                />
+                  <UserReactComponent
+                    lat={this.state.myLatitude}
+                    lng={this.state.myLongitude}
+                  />
 
-                {/* if(this.state.findThePhone === true){ */}
                   <PhoneReactComponent
                     lat={this.state.phoneLatitude}
                     lng={this.state.phoneLongitude}
                   />
-                {/* } */}
 
                 </GoogleMapReact>
 
@@ -142,16 +140,6 @@ export class Principal extends React.Component{
                   show={this.state.galleryOpened}
                   photos={this.state.photos}
                   onClose={this.toggleGallery} />
-
-                {/* <div>{
-                  this.state.photos.map((photo) => (
-                    <img width="400" height="400" src={"data:image/jpeg;base64," + photo}/>
-
-                  ))
-                  
-                }
-                </div> */}
-
                 
               </div>
             </div>

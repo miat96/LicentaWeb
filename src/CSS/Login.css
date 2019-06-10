@@ -1,8 +1,26 @@
-@media all and (min-width: 480px) {
-  
-    .Login form {
-      margin: 0 auto;
-      max-width: 320px;
-    }
+.Login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    background-image: url('../Images/general_background.jpg');
+    background-size: cover;
+    background-position: center;
+}
 
-  }
+.Login form {
+    margin: -100px auto 0 auto;
+    max-width: 320px;
+}
+
+.Login .login-title {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+}
+
+.Login .form-group {
+    width: 300px;
+}

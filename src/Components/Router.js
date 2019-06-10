@@ -13,15 +13,7 @@ import {ChangePassword} from "../Components/ChangePassword"
 export class Router extends React.Component{
     render(){
         return(
-            <div>
-                {/* <Route exact path="/" render={() => (
-                    LoginService.getId() === "" ? (
-                        <Redirect to="/application"/>
-                    ) : (
-                        <Redirect to="/principal"/>
-                    )
-                )}/> */}
-                
+            <div className="Router">       
                 <Route path="/" exact={true} component={Application}></Route>
                 <Route path="/application" exact={true} component={Application}></Route>
                 <Route path="/login" exact={true} component={Login}></Route>

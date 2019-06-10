@@ -42,6 +42,7 @@ export class Login extends React.Component{
     render(){
         return (
             <div className="Login">
+              <h3 className="login-title">Login</h3>
               <form onSubmit={this.handleSubmit}>
                 <FormGroup controlId="username">
                   <FormLabel>Email</FormLabel>
@@ -73,7 +74,7 @@ export class Login extends React.Component{
               <div>
                 {/* <a href="/findPassword" className="stretched-link" role="button">Ai uitat parola?</a> */}
                 <Link to="/findPassword">
-                    <NavItem>Ai uitat parola?</NavItem>
+                    <NavItem>Forgot password?</NavItem>
                 </Link>
               </div>    
             </div>

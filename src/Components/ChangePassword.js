@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import "../CSS/Login.css";
 import { NotificationManager } from 'react-notifications';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import "../CSS/CustomNavbar.css";
+import "../CSS/ChangePassword.css";
 import {FindPasswordService} from "../Services/FindPasswordService.js"
 import {ChangePasswordService} from "../Services/ChangePasswordService.js"
 
@@ -40,9 +40,10 @@ export class ChangePassword extends React.Component{
     render(){
         return (
             <div className="ChangePassword">
+                <h3 className="changepassword-title">Change password</h3>
                 <form onSubmit={this.handleSubmit}>
                     <FormGroup controlId="password1">
-                    <FormLabel>Noua parola</FormLabel>
+                    <FormLabel>New password</FormLabel>
                     <FormControl
                         autoFocus
                         type="password"
@@ -52,7 +53,7 @@ export class ChangePassword extends React.Component{
                     />
                     </FormGroup>
                     <FormGroup controlId="password2">
-                    <FormLabel>Confirma parola</FormLabel>
+                    <FormLabel>Confirm password</FormLabel>
                     <FormControl
                         type="password"
                         onChange={(event) => {
@@ -65,7 +66,7 @@ export class ChangePassword extends React.Component{
                     //disabled={!this.validateForm()}
                     type="submit"
                     >
-                    Schimba parola
+                    Change password
                     </Button>
                 </form>
             </div>

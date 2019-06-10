@@ -9,6 +9,7 @@ import {LoginService} from '../Services/LoginService.js'
 import {PrincipalService} from '../Services/PrincipalService.js'
 import Geocode from "react-geocode";
 import ReactBnbGallery from 'react-bnb-gallery'
+import "../CSS/Principal.css";
 
 const AnyReactComponent = props => <div><FontAwesomeIcon icon={faUser} size="2x" color="#990000"/></div>;
 
@@ -107,54 +108,55 @@ export class Principal extends React.Component{
     }
       render() {
         return (
-            <div style={{ height: '500px', width: '500px' }}>
-              <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyAnGL0048HDdUqUMoxmXvSnNXGRArcgGS0' }}
-                defaultCenter={this.state.center}
-                defaultZoom={this.props.zoom}
-              >
-            
-              <AnyReactComponent
-                lat={this.state.myLatitude}
-                lng={this.state.myLongitude}
-              />
+            <div className="Principal">
+              <div className="principal-container">
+                <form onSubmit={this.handleSubmit}>
+                    <Button
+                      block
+                      //disabled={!this.validateForm()}
+                      type="submit"
+                    >
+                      Get Location
+                    </Button>
+                </form>
 
-              {/* if(this.state.findThePhone === true){ */}
-                <PhoneReactComponent
-                  lat={this.state.phoneLatitude}
-                  lng={this.state.phoneLongitude}
-                />
-              {/* } */}
-
-              </GoogleMapReact>
-
-              <form onSubmit={this.handleSubmit}>
-                <Button
-                  block
-                  //disabled={!this.validateForm()}
-                  type="submit"
+                <GoogleMapReact
+                  bootstrapURLKeys={{ key: 'AIzaSyAnGL0048HDdUqUMoxmXvSnNXGRArcgGS0' }}
+                  defaultCenter={this.state.center}
+                  defaultZoom={this.props.zoom}
                 >
-                  Get Location
-                </Button>
-              </form>
-
-
-              <button onClick={this.toggleGallery}>Open photo gallery</button>
-              <ReactBnbGallery
-                show={this.state.galleryOpened}
-                photos={this.state.photos}
-                onClose={this.toggleGallery} />
-
-              {/* <div>{
-                 this.state.photos.map((photo) => (
-                  <img width="400" height="400" src={"data:image/jpeg;base64," + photo}/>
-
-                ))
-                
-              }
-              </div> */}
-
               
+                <AnyReactComponent
+                  lat={this.state.myLatitude}
+                  lng={this.state.myLongitude}
+                />
+
+                {/* if(this.state.findThePhone === true){ */}
+                  <PhoneReactComponent
+                    lat={this.state.phoneLatitude}
+                    lng={this.state.phoneLongitude}
+                  />
+                {/* } */}
+
+                </GoogleMapReact>
+
+                <button onClick={this.toggleGallery}>Open photo gallery</button>
+                <ReactBnbGallery
+                  show={this.state.galleryOpened}
+                  photos={this.state.photos}
+                  onClose={this.toggleGallery} />
+
+                {/* <div>{
+                  this.state.photos.map((photo) => (
+                    <img width="400" height="400" src={"data:image/jpeg;base64," + photo}/>
+
+                  ))
+                  
+                }
+                </div> */}
+
+                
+              </div>
             </div>
         );
       }

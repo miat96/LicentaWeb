@@ -6,6 +6,7 @@ import { faMobileAlt, faUser } from '@fortawesome/fontawesome-free-solid'
 import {LoginService} from '../Services/LoginService.js'
 import {PrincipalService} from '../Services/PrincipalService.js'
 import ReactBnbGallery from 'react-bnb-gallery'
+import "../CSS/Principal.css";
 
 const UserReactComponent = props => <div><FontAwesomeIcon icon={faUser} size="2x" color="#990000"/></div>;
 
@@ -104,38 +105,55 @@ export class Principal extends React.Component{
     }
       render() {
         return (
-            <div style={{ height: '500px', width: '500px' }}>
-              <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyAnGL0048HDdUqUMoxmXvSnNXGRArcgGS0' }}
-                defaultCenter={this.state.center}
-                defaultZoom={this.props.zoom}
-              >
-                <UserReactComponent
+            <div className="Principal">
+              <div className="principal-container">
+                <form onSubmit={this.handleSubmit}>
+                    <Button
+                      block
+                      //disabled={!this.validateForm()}
+                      type="submit"
+                    >
+                      Get Location
+                    </Button>
+                </form>
+
+                <GoogleMapReact
+                  bootstrapURLKeys={{ key: 'AIzaSyAnGL0048HDdUqUMoxmXvSnNXGRArcgGS0' }}
+                  defaultCenter={this.state.center}
+                  defaultZoom={this.props.zoom}
+                >
+              
+                <AnyReactComponent
                   lat={this.state.myLatitude}
                   lng={this.state.myLongitude}
                 />
-                <PhoneReactComponent
-                  lat={this.state.phoneLatitude}
-                  lng={this.state.phoneLongitude}
-                />
-              </GoogleMapReact>
 
-              <form onSubmit={this.handleSubmit}>
-                <Button
-                  block
-                  //disabled={!this.validateForm()}
-                  type="submit"
-                >
-                  Get Location
-                </Button>
-              </form>
+                {/* if(this.state.findThePhone === true){ */}
+                  <PhoneReactComponent
+                    lat={this.state.phoneLatitude}
+                    lng={this.state.phoneLongitude}
+                  />
+                {/* } */}
 
+                </GoogleMapReact>
 
-              <button onClick={this.toggleGallery}>Open photo gallery</button>
-              <ReactBnbGallery
-                show={this.state.galleryOpened}
-                photos={this.state.photos}
-                onClose={this.toggleGallery} />              
+                <button onClick={this.toggleGallery}>Open photo gallery</button>
+                <ReactBnbGallery
+                  show={this.state.galleryOpened}
+                  photos={this.state.photos}
+                  onClose={this.toggleGallery} />
+
+                {/* <div>{
+                  this.state.photos.map((photo) => (
+                    <img width="400" height="400" src={"data:image/jpeg;base64," + photo}/>
+
+                  ))
+                  
+                }
+                </div> */}
+
+                
+              </div>
             </div>
         );
       }

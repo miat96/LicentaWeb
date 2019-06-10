@@ -4,7 +4,7 @@ import {Link, withRouter} from 'react-router-dom';
 //import "../CSS/CustomNavbar.css";
 
 const LoginComponent = props => <Link to="/login" className="loginLink"><NavItem>Login</NavItem></Link>
-const RegisterComponent = props => <Link to="/register" className="registerLink"><NavItem>Creare cont</NavItem></Link>
+const RegisterComponent = props => <Link to="/register" className="registerLink"><NavItem>Create account</NavItem></Link>
 
 class Header extends React.Component {
 

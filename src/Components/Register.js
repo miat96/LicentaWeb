@@ -36,7 +36,7 @@ export class Register extends React.Component{
     render(){
         return (
             <div className="Register">
-
+              <h3 className="register-title">Register</h3>
               <form onSubmit={this.handleSubmit}>
                 <FormGroup controlId="username">
                   <FormLabel>Username</FormLabel>

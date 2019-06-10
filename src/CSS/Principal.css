@@ -1,0 +1,30 @@
+.Principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    background-image: url('../Images/general_background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.principal-container > form, 
+.principal-container > button {
+    margin-bottom: 10%;
+    width: 155px;
+}
+
+.principal-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+    width: 80%;
+    margin: 20px 0 10px 0;
+}
+
+.principal-container > div {
+    width: 50% !important;
+}

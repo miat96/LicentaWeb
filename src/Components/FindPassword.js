@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import "../CSS/Login.css";
 import {FindPasswordService} from '../Services/FindPasswordService.js';
 import { NotificationManager } from 'react-notifications';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import "../CSS/CustomNavbar.css";
+import "../CSS/FindPassword.css";
 
 
 export class FindPassword extends React.Component{
@@ -31,7 +31,7 @@ export class FindPassword extends React.Component{
     render(){
         return (
             <div className="FindPassword">
-                <h3>Introduceti adresa de email folosita la crearea contului:</h3>
+                <h3 className="findpassword-title">Enter your account email address:</h3>
                 <form onSubmit={this.handleSubmit}>
                 <FormGroup controlId="username">
                   <FormLabel>Email</FormLabel>
@@ -47,7 +47,7 @@ export class FindPassword extends React.Component{
                   block
                   type="submit"
                 >
-                  Recuperare cont
+                  Reset password
                 </Button>
                 </form>
 
